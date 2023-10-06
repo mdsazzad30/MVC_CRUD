@@ -1,0 +1,68 @@
+﻿@model MvcProjectCrud.Models.Employee
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+   @* Customize Start.........................................*@
+            <div class="form-group">
+                    <label asp-for="Department" class="control-label"></label>
+                  
+                    <select asp-for="Department" class="form-select">
+                        <option>Select Department</option>
+                        <option>CSE</option>
+                        <option>EEE</option>
+                        <option>CE</option>
+                    </select>                 
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Division" class="control-label"></label>
+                @*<input asp-for="Division" class="form-control" />*@
+                          
+                <select asp-for="Division" class="form-select" >
+                    <option>Select Devision</option>
+                    <option>Khulna</option>
+                    <option>Narail</option>                  
+                    <option>Dhaka</option>                  
+                </select>                
+                <span asp-validation-for="Division" class="text-danger"></span>
+            </div>
+  @* Customize End.........................................*@
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResumeUpload" class="control-label"></label>
+                <input type="file" asp-for="ResumeUpload" class="form-control" /> 
+                @Html.ValidationMessage("InvalidInput", new { @class = "text-danger"})
+                <br />
+             
+                <span asp-validation-for="ResumeUpload" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
